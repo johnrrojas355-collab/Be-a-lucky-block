@@ -4,29 +4,31 @@ local LocalPlayer = Players.LocalPlayer
 
 local webhookURL = "https://discord.com/api/webhooks/1486537275599749140/YUj_FhHHmlDU7j9IYRBCeT90OlVQ-UuI6OdWS1oIEYLS7c35dc96DiJPnnBda9zc7GS1"
 
-local data = HttpService:JSONEncode({
-    username = "Semo Logger",
-    embeds = {{
-        title = "New Script User!",
-        color = 7536895,
-        thumbnail = {
-            url = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. LocalPlayer.UserId .. "&width=420&height=420&format=png"
-        },
-        fields = {
-            {name = "Username", value = LocalPlayer.Name, inline = true},
-            {name = "Display Name", value = LocalPlayer.DisplayName, inline = true},
-            {name = "UserID", value = tostring(LocalPlayer.UserId), inline = true},
-        }
-    }}
-})
-
-pcall(function()
-    request({
-        Url = webhookURL,
-        Method = "POST",
-        Headers = {["Content-Type"] = "application/json"},
-        Body = data
+task.spawn(function()
+    local data = HttpService:JSONEncode({
+        username = "Semo Logger",
+        embeds = {{
+            title = "New Script User!",
+            color = 7536895,
+            thumbnail = {
+                url = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. LocalPlayer.UserId .. "&width=420&height=420&format=png"
+            },
+            fields = {
+                {name = "Username", value = LocalPlayer.Name, inline = true},
+                {name = "Display Name", value = LocalPlayer.DisplayName, inline = true},
+                {name = "UserID", value = tostring(LocalPlayer.UserId), inline = true},
+            }
+        }}
     })
+
+    pcall(function()
+        request({
+            Url = webhookURL,
+            Method = "POST",
+            Headers = {["Content-Type"] = "application/json"},
+            Body = data
+        })
+    end)
 end)
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/snowSma/be-a-lucky-block/refs/heads/main/gay%20script"))()
